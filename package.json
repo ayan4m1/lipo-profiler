@@ -1,0 +1,35 @@
+{
+  "name": "lipo-profiler",
+  "version": "0.1.0",
+  "description": "Generate CSVs for WMR CBA software",
+  "author": "ayan4m1 <andrew@bulletlogic.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp",
+    "develop": "gulp watch"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.6.3",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/plugin-transform-regenerator": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/register": "^7.6.2",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-eslint": "^6.0.0",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2",
+    "prettier-eslint": "^9.0.0"
+  }
+}
