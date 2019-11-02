@@ -64,7 +64,7 @@ const execute = async () => {
   log.info('Started CSV generation...');
 
   for (const wattage of wattages) {
-    let serialNumber = 0;
+    let serialNumber = 1;
 
     const createLogEntry = (time, voltage, amperage) =>
       `${serialNumber++},${time},${voltage},${amperage}`;
