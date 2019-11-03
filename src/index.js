@@ -8,31 +8,33 @@ const log = loggers('app');
 
 const puffs = {
   count: 10,
-  rampUp: 1000,
   duration: {
-    mean: 3000,
-    dev: 100
+    mean: 4500,
+    dev: 1000
   },
   voltage: 14.8
 };
 const idle = {
   duration: {
-    mean: 5000,
-    dev: 500
+    mean: 25000,
+    dev: 10000
   }
 };
 const wattages = [
   {
     heating: 35,
-    cooling: 20
+    cooling: 20,
+    rampUp: 1500
   },
   {
-    heating: 50,
-    cooling: 35
+    heating: 75,
+    cooling: 50,
+    rampUp: 1000
   },
   {
     heating: 150,
-    cooling: 75
+    cooling: 75,
+    rampUp: 750
   }
 ];
 
@@ -81,7 +83,7 @@ const execute = async () => {
 
     for (let puff = 0; puff < puffs.count; puff++) {
       const puffMs = randomPuff();
-      const coolingMs = Math.max(0, puffMs - puffs.rampUp);
+      const coolingMs = Math.max(0, puffMs - wattage.rampUp);
       const idleMs = randomIdle();
 
       const prePuff = formatTimestamp(iterationMs, 0);
@@ -89,7 +91,7 @@ const execute = async () => {
       results.push(createLogEntry(prePuff, puffs.voltage, amps.heating));
 
       if (coolingMs > 0) {
-        const preCool = formatTimestamp(iterationMs, puffs.rampUp);
+        const preCool = formatTimestamp(iterationMs, wattage.rampUp);
 
         results.push(createLogEntry(preCool, puffs.voltage, amps.cooling));
       }
