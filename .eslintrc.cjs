@@ -1,17 +1,12 @@
-const path = require('path');
-
 module.exports = {
   env: {
-    commonjs: true,
-    es6: true,
+    es2020: true,
     node: true
   },
-  plugins: ['import', 'prettier'],
   extends: [
     'eslint:recommended',
     'plugin:prettier/recommended',
-    'plugin:import/errors',
-    'prettier'
+    'plugin:import/recommended'
   ],
   parser: '@babel/eslint-parser',
   parserOptions: {

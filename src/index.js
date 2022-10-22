@@ -2,7 +2,7 @@ import Chance from 'chance';
 import moment from 'moment';
 import { writeFile } from 'fs';
 
-import loggers from './logging';
+import loggers from './logging.js';
 
 const log = loggers('app');
 
@@ -40,7 +40,7 @@ const wattages = [
 
 const chance = new Chance();
 
-const random = duration => chance.normal(duration);
+const random = (duration) => chance.normal(duration);
 
 const randomPuff = () => random(puffs.duration);
 const randomIdle = () => random(idle.duration);
@@ -49,14 +49,8 @@ const formatTimestamp = (previousFrame, duration) => {
   const currentFrame = moment.duration(previousFrame, 'ms').add(duration, 'ms');
   const [hours, minutes, seconds] = [
     currentFrame.hours(),
-    currentFrame
-      .minutes()
-      .toString()
-      .padStart(2, '0'),
-    currentFrame
-      .seconds()
-      .toString()
-      .padStart(2, '0')
+    currentFrame.minutes().toString().padStart(2, '0'),
+    currentFrame.seconds().toString().padStart(2, '0')
   ];
 
   return `${hours}:${minutes}:${seconds}`;
@@ -109,7 +103,7 @@ const execute = async () => {
       `profile-${wattage.heating}w.csv`,
       `Number,Time,Voltage,Current\n${results.join('\n')}\n`,
       'utf8',
-      error => {
+      (error) => {
         if (error) {
           log.error(error.message, error);
         }
